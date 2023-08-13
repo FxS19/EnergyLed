@@ -1,0 +1,13 @@
+on:
+  push:
+    branches:
+    - main
+jobs:
+  lint:
+    name: Lint Arduino Project
+    runs-on: ubuntu-lastest
+    steps:
+      # You may pin to the exact commit or the version.
+      # uses: arduino/arduino-lint-action@e9a30879471dcbf7d9fe3481b26e60b652cca297
+      - uses: arduino/arduino-lint-action@v1.0.2
+  
