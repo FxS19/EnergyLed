@@ -1,4 +1,3 @@
-#include "core_esp8266_features.h"
 #pragma once
 #include "WString.h"
 #include "HardwareSerial.h"
@@ -44,26 +43,27 @@ class Webserver{
       buttons += R"(<label class="input-label" for="ssid">SSID:</label><br>)";
       buttons += R"(<input class="input-field" type="text" data-key="SSID" value=")" + p_settings->Value.networkSsid + R"(">)";
       buttons += R"(<br>)";
-      buttons += R"(<label class="input-label" for="networkPassword">Network Password:</label><br>)";
+      buttons += R"(<label class="input-label" for="networkPassword">Network password:</label><br>)";
       buttons += R"(<input class="input-field" type="password" data-key="NETWORKPASSWORD"><br>)";
       buttons += R"(<br><br>)";
-      buttons += R"(<label class="input-label" for="mqttAddress">MQTT Address:</label><br>)";
+      buttons += R"(<label class="input-label" for="mqttAddress">MQTT address:</label><br>)";
       buttons += R"(<input class="input-field" type="text" placeholder="Address of mqtt server" data-key="MQTTTOPIC" value=")" + p_settings->Value.mqttAddress + R"(">)";
       buttons += R"(<br>)";
-      buttons += R"(<label class="input-label" for="mqttUser">MQTT User:</label><br>)";
+      buttons += R"(<label class="input-label" for="mqttUser">MQTT user:</label><br>)";
       buttons += R"(<input class="input-field" type="text" data-key="MQTTUSER" value=")" + p_settings->Value.mqttUser + R"(">)";
       buttons += R"(<br>)";
-      buttons += R"(<label class="input-label" for="mqttPassword">MQTT Password:</label><br>)";
+      buttons += R"(<label class="input-label" for="mqttPassword">MQTT password:</label><br>)";
       buttons += R"(<input class="input-field" type="password" data-key="MQTTPASSWORD">)";
       buttons += R"(<br>)";
-      buttons += R"(<label class="input-label" for="mqttEnergyTopic">Energie Topic:</label><br>)";
+      buttons += R"(<label class="input-label" for="mqttEnergyTopic">Energy topic:</label><br>)";
       buttons += R"(<input class="input-field" type="text" data-key="ENERGYTOPIC" placeholder="Toppic to subscribe to" value=")" + p_settings->Value.mqttEnergyTopic + R"(">)";
       buttons += R"(<br>)";
-      buttons += R"(<label class="input-label" for="mqttEnergyElementPath">Energie Topic:</label><br>)";
+      buttons += R"(<label class="input-label" for="mqttEnergyElementPath">Energy value path:</label><br>)";
       buttons += R"(<input class="input-field" type="text" data-key="ENERGYTOPICPATH" placeholder="path/inside/json" value=")" + p_settings->Value.mqttEnergyElementPath + R"(">)";
       buttons += R"(<br><br>)";
-      buttons += R"(<label class="input-label" for="otaPassword">OTA Password:</label><br>)";
+      buttons += R"(<label class="input-label" for="otaPassword">OTA password:</label><br>)";
       buttons += R"(<input class="input-field" type="password" data-key="OTAPASSWORD">)";
+      buttons += R"(<br>)";
       return buttons;
     }
 
