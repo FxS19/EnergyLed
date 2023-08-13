@@ -1,5 +1,5 @@
 #pragma once
-#define LOG_ENABLE
+//#define LOG_ENABLE
 class Log{
   public:
     static void writeln(String message)
