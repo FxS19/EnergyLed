@@ -25,9 +25,12 @@ void PowerDisplay::displayPower(float power, byte r, byte g, byte b){
   float minValue = 50;
   p_led->Fill(0);
   if (power < minValue){
-    float p = power/minValue;
-    //p *= p;
-    p_led->SetPixel(0, r * p, g * p, b * p);
+    if (power <= 10 ){
+      p_led->SetPixel(0, 8, 8, 0);
+    } else {
+      float p = power/minValue;
+      p_led->SetPixel(0, r * p, g * p, b * p);
+    }
   } else {
     uint8_t i = 0;
     // Fill bpttom

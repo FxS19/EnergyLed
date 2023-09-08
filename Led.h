@@ -11,10 +11,10 @@ class Led{
     Led(float * brightness);
     void Begin();
     uint16_t GetLedCount();
-    void SetBrightness(uint8_t);
+    void SetBrightness(uint8_t brightness);
     void Fade();
-    void SetPixel(uint16_t, uint8_t, uint8_t, uint8_t);
-    void SetPixel(uint16_t, uint32_t);
-    void Fill(uint32_t);
+    void SetPixel(uint16_t pixel, uint8_t r, uint8_t g, uint8_t b);
+    void SetPixel(uint16_t pixel, uint32_t rgb);
+    void Fill(uint32_t rgb);
     void Show();
 };
