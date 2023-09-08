@@ -114,6 +114,83 @@ const char index_html[] PROGMEM = R"rawliteral(
 </html>
 )rawliteral";
 
+const char kiosk_html[] PROGMEM = R"rawliteral(
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Power Gallery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        background-color: #000;
+      }
+      
+      .text-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+      
+      .text {
+        font-size: 24vw; /* 30% of viewport width */
+        white-space: nowrap;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="text-container">
+      <p id="power" class="text">??? W</p>
+    </div>
+    <script>
+      var gateway = `ws://${window.location.hostname}/ws`;
+      var websocket;
+      var reconnectInterval = 0;
+      var sendInterval = 0;
+      window.addEventListener('load', onLoad);
+      function initWebSocket() {
+        console.log('Trying to open a WebSocket connection...');
+        websocket = new WebSocket(gateway);
+        websocket.onopen    = onOpen;
+        websocket.onclose   = onClose;
+        websocket.onmessage = onMessage;
+        websocket.onerror   = onError;
+      }
+      function onOpen(event) {
+        console.log('Connection opened');
+        clearInterval(reconnectInterval);
+        sendInterval = setInterval(()=>websocket.send("Hi"), 5000);
+      }
+      function onClose(event) {
+        console.log('Connection closed');
+        document.getElementById('power').innerHTML = "ERROR";
+        clearInterval(sendInterval);
+        clearInterval(reconnectInterval);
+        reconnectInterval = setInterval(initWebSocket, 10000);
+      }
+      function onError(event) {
+        console.log('Error!!!');
+      }
+      function onMessage(event) {
+        document.getElementById('power').innerHTML = event.data + " W";
+      }
+      function onLoad(event) {
+        initWebSocket();
+      }
+    </script>
+  </body>
+</html>
+)rawliteral";
+
 const char settings_html[] PROGMEM = R"HTML(
 <!DOCTYPE html>
 <html>

@@ -73,6 +73,10 @@ class Webserver{
         request->send_P(200, "text/html", index_html);
       });
 
+      server.on("/kiosk", HTTP_GET, [this] (AsyncWebServerRequest *request) {
+        request->send_P(200, "text/html", kiosk_html);
+      });
+
       server.on("/settings", HTTP_GET, [this] (AsyncWebServerRequest *request) {
         String data = settings_html;
         data.replace("[[SETTINGSFORM]]", settingsFormProcessor());
