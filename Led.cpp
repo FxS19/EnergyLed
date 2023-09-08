@@ -10,7 +10,7 @@ Led::Led(float * brightness):
 }
 
 void Led::Begin(){
-  // Alle Pixel zu Beginn ausschalten
+  // Turn off all LEDs at begin
   strip.begin();
   strip.clear();
   strip.show();
@@ -20,7 +20,7 @@ uint16_t Led::GetLedCount(){
   return ledCount;
 }
 
-// Fade all Leds by shifting its value (devide by 2)
+// Fade all LEDs by shifting its value (divide by 2)
 void Led::Fade(){
   for(uint8_t fadeLed = 0; fadeLed < 9; fadeLed++){
     uint32_t color = strip.getPixelColor(fadeLed);

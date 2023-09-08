@@ -19,7 +19,7 @@ SparkAnimation::SparkAnimation(Led * led,  uint32_t color, uint8_t fps, bool isD
 void SparkAnimation::Update() {
   delay(1);
   if (millis() > lastUpdate + fps ){
-    //Log::write("Updating spark animantion");
+    //Log::write("Updating spark animation");
     lastUpdate = millis();
     p_led->Fade();
     p_led->SetPixel(activeLed, color);

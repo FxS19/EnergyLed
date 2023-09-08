@@ -15,7 +15,7 @@ Network::Network(Led * led, Settings * settings):
 void Network::Begin(){
   Log::writeln("Network begin");
   if (p_settings->IsOK() || p_settings->IsTEST()) {
-    Log::writeln("Network connecting to ssid");
+    Log::writeln("Network connecting to SSID");
     WiFi.begin(this->p_settings->Value.networkSsid, this->p_settings->Value.networkPassword);
     WiFi.hostname(this->p_settings->Value.hostname);
     this->Connect();
@@ -47,7 +47,7 @@ void Network::Connect(){
       while (!flashAnimation.IsComplete()) flashAnimation.Update();
       flashAnimation.CLear();
       if (p_settings->IsTEST()){
-        Log::writeln("Network cinfig not correct: restart to config");
+        Log::writeln("Network config not correct: restart to config");
         p_settings->SetNOK();
         ESP.restart();
       }
